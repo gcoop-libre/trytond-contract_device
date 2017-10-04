@@ -8,5 +8,39 @@
             <field name="inherit" ref="contract.contract_view_form"/>
             <field name="name">contract_form</field>
         </record>
+
+        <!-- permisos -->
+        <record model="ir.rule.group" id="rule_group_contract">
+            <field name="model" search="[('model', '=', 'contract')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_contract1">
+            <field name="domain"
+                eval="[('contract_device', 'in', Eval('user', {}).get('devices', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_contract"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_party">
+            <field name="model" search="[('model', '=', 'party.party')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <!--
+        <record model="ir.rule" id="rule_party1">
+            <field name="domain"
+                eval="[('delegacion', 'in', Eval('user', {}).get('devices', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_party"/>
+        </record>
+        -->
+
+        <!--
+        <record model="ir.rule" id="rule_party2">
+            <field name="domain"
+                eval="[('create_uid', '=', Eval('user', {}).get('id', -1))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_party"/>
+        </record>
+        -->
     </data>
 </tryton>
