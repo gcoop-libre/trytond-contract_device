@@ -1,6 +1,7 @@
 # This file is part of the contract_device module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
+from trytond.pyson import Eval
 from trytond.model import fields
 from trytond.pool import PoolMeta
 
@@ -11,7 +12,10 @@ __all__ = ['User']
 class User:
     __metaclass__ = PoolMeta
     __name__ = "res.user"
-    contract_device = fields.Many2One('contract.device', 'Contract Device')
+    contract_device = fields.Many2One('contract.device', 'Contract Device',
+        domain=[('id', 'in', Eval('devices', []))], depends=['devices'])
+    devices = fields.Many2Many('contract.device-res.user', 'user', 'device',
+        'Devices')
 
     @classmethod
     def __setup__(cls):
@@ -19,6 +23,7 @@ class User:
         if 'contract_device' not in cls._preferences_fields:
             cls._preferences_fields.extend([
                     'contract_device',
+                    'devices',
                     ])
 
     def get_status_bar(self, name):
