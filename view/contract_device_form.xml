@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of the sale_payment module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <label name="journal"/>
+    <field name="journal" widget="selection"/>
+    <label name="analytic_account"/>
+    <field name="analytic_account"/>
+    <notebook>
+        <page string="Users" id="user">
+            <field name="users"/>
+        </page>
+        <page string="Point of sales" id="point_of_sales">
+            <field name="point_of_sales"/>
+        </page>
+    </notebook>
+</form>

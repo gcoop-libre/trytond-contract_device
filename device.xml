@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- This file is part of the contract_device module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="contract_device_form_view">
+            <field name="model">contract.device</field>
+            <field name="type">form</field>
+            <field name="name">contract_device_form</field>
+        </record>
+        <record model="ir.ui.view" id="contract_device_tree_view">
+            <field name="model">contract.device</field>
+            <field name="type">tree</field>
+            <field name="name">contract_device_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_contract_device">
+            <field name="name">Contract Device</field>
+            <field name="res_model">contract.device</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_contract_device_tree">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="contract_device_tree_view"/>
+            <field name="act_window" ref="act_contract_device"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_contract_device_form">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="contract_device_form_view"/>
+            <field name="act_window" ref="act_contract_device"/>
+        </record>
+
+        <menuitem name="Contract Devices" parent="contract.menu_configuration"
+            id="menu_contract_device" icon="tryton-list" action="act_contract_device"/>
+    </data>
+</tryton>
