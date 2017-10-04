@@ -3,7 +3,7 @@
 # copyright notices and license terms.
 from trytond.model import ModelSQL, ModelView, fields
 
-__all__ = ['ContractDevice']
+__all__ = ['ContractDevice', 'ContractDeviceResUser']
 
 
 class ContractDevice(ModelSQL, ModelView):
@@ -28,3 +28,17 @@ class ContractDevice(ModelSQL, ModelView):
     #        ('active', '=', True),
     #        ('root.code', '=', 'contract_device'),
     #    ])
+
+    @staticmethod
+    def default_active():
+        return True
+
+
+class ContractDeviceResUser(ModelSQL):
+    'Contract Device - Res User'
+    __name__ = 'contract.device-res.user'
+
+    device = fields.Many2One('contract.device', 'Device', ondelete='CASCADE',
+        select=True, required=True)
+    user = fields.Many2One('res.user', 'User', ondelete='RESTRICT',
+        required=True)

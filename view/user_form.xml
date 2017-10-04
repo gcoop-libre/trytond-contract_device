@@ -8,5 +8,10 @@ copyright notices and license terms. -->
         position="after">
         <label name="contract_device"/>
         <field name="contract_device" widget="selection"/>
+        <notebook>
+            <page string="Devices" col="2" id="devices">
+                <field name="devices"/>
+            </page>
+        </notebook>
     </xpath>
 </data>

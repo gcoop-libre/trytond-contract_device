@@ -11,6 +11,7 @@ from . import pos
 def register():
     Pool.register(
         device.ContractDevice,
+        device.ContractDeviceResUser,
         pos.Pos,
         user.User,
         contract.Contract,
