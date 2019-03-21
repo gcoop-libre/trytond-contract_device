@@ -8,8 +8,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Pos']
 
 
-class Pos:
-    __metaclass__ = PoolMeta
+class Pos(metaclass=PoolMeta):
     __name__ = 'account.pos'
 
     contract_device = fields.Many2One('contract.device', 'Contract device')

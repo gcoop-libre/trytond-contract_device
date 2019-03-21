@@ -9,8 +9,7 @@ from trytond.pool import PoolMeta
 __all__ = ['User']
 
 
-class User:
-    __metaclass__ = PoolMeta
+class User(metaclass=PoolMeta):
     __name__ = "res.user"
     contract_device = fields.Many2One('contract.device', 'Contract Device',
         domain=[('id', 'in', Eval('devices', []))], depends=['devices'])

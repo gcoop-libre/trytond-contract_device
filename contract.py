@@ -10,9 +10,8 @@ from trytond.transaction import Transaction
 __all__ = ['Contract', 'ContractConsumption']
 
 
-class Contract:
+class Contract(metaclass=PoolMeta):
     __name__ = 'contract'
-    __metaclass__ = PoolMeta
 
     contract_device = fields.Many2One('contract.device', 'Contract Device',
         required=True, readonly=False)
@@ -34,9 +33,8 @@ class Contract:
         return user.contract_device.id if user.contract_device else None
 
 
-class ContractConsumption:
+class ContractConsumption(metaclass=PoolMeta):
     __name__ = 'contract.consumption'
-    __metaclass__ = PoolMeta
 
     @classmethod
     def __setup__(cls):
