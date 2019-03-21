@@ -20,14 +20,6 @@ class ContractDevice(ModelSQL, ModelView):
        add_remove=[])
     point_of_sales = fields.One2Many('account.pos', 'contract_device',
         'Point of sales', add_remove=[], required=True)
-    #analytic_account = fields.Many2One(
-    #    'analytic_account.account',
-    #    'Centro de costo',
-    #    domain=[
-    #        ('type', '=', 'normal'),
-    #        ('active', '=', True),
-    #        ('root.code', '=', 'contract_device'),
-    #    ])
 
     @staticmethod
     def default_active():
