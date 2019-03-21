@@ -52,6 +52,6 @@ class ContractConsumption:
         values = dict(keys)
         device = values['contract'].contract_device
         invoice.pos = values['contract'].pos
-        invoice._set_invoice_type_sequence()
+        invoice.invoice_type = invoice.on_change_with_invoice_type()
         invoice.journal = device.journal
         return invoice
